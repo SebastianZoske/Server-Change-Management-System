@@ -1,0 +1,11 @@
+{% extends 'CDUCSUSCMSBundle::baseTemplate.html.twig' %}
+
+{%block content%}
+{% if create %}<h3>User erstellen</h3>{%else%}<h3>User editieren</h3>   
+{%endif%}
+<form novalidate="true" method="POST" {{ form_enctype(form) }}/>
+     {{ form_widget(form) }}
+      <input type="submit"/>
+</form>
+
+{%endblock%}

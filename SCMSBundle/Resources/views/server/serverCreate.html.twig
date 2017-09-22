@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/cducsuscms/css/bootstrap.css')}}" />
+    </head>
+    <body>
+        {% if create %}<h3>Server erstellen</h3>{%else%}<h3>Server editieren</h3>
+        {%endif%}
+        <form novalidate="true" method="POST" {{ form_enctype(form) }}/>
+             {{ form_widget(form) }}
+              <input type="submit"/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/cducsuscms/css/bootstrap.css')}}" />
+    </head>
+
+    <body>
+        {% if create %}<h3>Änderung erstellen</h3>{%else%}<h3>Aenderung editieren</h3>
+        {%endif%}
+        <form novalidate="true" method="POST" {{ form_enctype(form) }}/>
+             {{ form_widget(form) }}
+              <input width="40" height="40" type="image" src="{{asset("bundles/cducsuscms/images/accept.png")}}"/>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,48 @@
+{% extends 'CDUCSUSCMSBundle::baseTemplate.html.twig' %}
+
+{%block content%}
+
+<div class="datagrid">
+    
+<div id="add">
+    <a href="{{path("standortCreate")}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/add.png")}}"/></a>
+</div>
+    
+    <table>
+        <tfoot><h3 align="center">Standort Übersicht</h3></tfoot>
+        <thead>
+            <tr>
+                <th>ID</th><th>PLZ</th><th>Ort</th><th>Strasse</th><th>Haus</th><th>Aktionen</th>
+            <tr>
+        <thead>
+        <tbody>
+    {% for standort in liste %}
+                <tr>
+                    <td align = "center">{{standort.id}}</td>
+                    <td align = "center">{{standort.plz}}</td>
+                    <td align = "center">{{standort.ort}}</td>
+                    <td align = "center">{{standort.strasse}}</td>
+                    <td align = "center">{{standort.haus}}</td>
+                    <td>
+                        <a href="{{path("standortErase",{'id':standort.id})}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/erase.png")}}"/></a>
+                        <a href="{{path("standortEdit",{'id':standort.id})}}"> <img height="20" width="20" src="{{asset("bundles/cducsuscms/images/edit.png")}}"/></a>
+                    </td>
+                </tr>
+    {% endfor %}
+        </tbody>
+        <tfoot> 
+            <td  colspan="12">
+                <div style="height:25px;">
+                    <ul>
+                        <li>
+                        </li> 
+                        <li> 
+                        </li>                                                                
+                    </ul>
+                </div>
+            </td>
+        </tfoot>
+    </table>
+</div>
+
+{%endblock%}

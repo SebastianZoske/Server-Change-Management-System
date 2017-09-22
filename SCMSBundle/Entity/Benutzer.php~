@@ -1,0 +1,214 @@
+<?php
+
+namespace CDUCSU\SCMSBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Benutzer
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Benutzer implements \Symfony\Component\Security\Core\User\UserInterface, \Serializable
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vorname", type="string", length=255)
+     */
+    private $vorname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telNr", type="string", length=255)
+     */
+    private $telNr;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Aenderung",mappedBy="benutzer")
+     */
+    private $aenderungen;
+    
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Rolle", inversedBy="benutzer")
+     */
+    private $rollen;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Benutzer
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set vorname
+     *
+     * @param string $vorname
+     * @return Benutzer
+     */
+    public function setVorname($vorname)
+    {
+        $this->vorname = $vorname;
+    
+        return $this;
+    }
+
+    /**
+     * Get vorname
+     *
+     * @return string 
+     */
+    public function getVorname()
+    {
+        return $this->vorname;
+    }
+
+    /**
+     * Set telNr
+     *
+     * @param string $telNr
+     * @return Benutzer
+     */
+    public function setTelNr($telNr)
+    {
+        $this->telNr = $telNr;
+    
+        return $this;
+    }
+
+    /**
+     * Get telNr
+     *
+     * @return string 
+     */
+    public function getTelNr()
+    {
+        return $this->telNr;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aenderungen = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add aenderungen
+     *
+     * @param \CDUCSU\SCMSBundle\Entity\Aenderung $aenderungen
+     * @return Benutzer
+     */
+    public function addAenderungen(\CDUCSU\SCMSBundle\Entity\Aenderung $aenderungen)
+    {
+        $this->aenderungen[] = $aenderungen;
+    
+        return $this;
+    }
+
+    /**
+     * Remove aenderungen
+     *
+     * @param \CDUCSU\SCMSBundle\Entity\Aenderung $aenderungen
+     */
+    public function removeAenderungen(\CDUCSU\SCMSBundle\Entity\Aenderung $aenderungen)
+    {
+        $this->aenderungen->removeElement($aenderungen);
+    }
+
+    /**
+     * Get aenderungen
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAenderungen()
+    {
+        return $this->aenderungen;
+    }
+
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+            $this->name,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($serialized) {
+        list(
+            $this->id,
+            $this->name,
+            $this->password,
+        ) = unserialize($serialized);
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getRoles() {
+        return array('ROLE_USER');
+    }
+
+    public function getSalt() {
+        
+    }
+
+    public function getUsername() {
+        
+    }    
+}

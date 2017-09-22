@@ -1,0 +1,46 @@
+{% extends 'CDUCSUSCMSBundle::baseTemplate.html.twig' %}
+
+{%block content%}
+
+<div class="datagrid">
+    
+<div id="add">
+    <a href="{{path("userCreate")}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/add.png")}}"/></a>
+</div>
+    
+    <table>
+        <tfoot><h3 align="center">User Übersicht</h3></tfoot>
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Rolle</th><th>Aktionen</th>
+            <tr>
+        <thead>
+        <tbody>
+    {% for user in liste %}
+                <tr>
+                    <td align = "center">{{user.id}}</td>
+                    <td align = "center">{{user.name}}</td>
+                    <td align = "center">{{user.role}}</td>
+                    <td>
+                        <a href="{{path("userErase",{'id':user.id})}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/erase.png")}}"/></a>
+                        <a href="{{path("userEdit",{'id':user.id})}}"> <img height="20" width="20" src="{{asset("bundles/cducsuscms/images/edit.png")}}"/></a>
+                    </td>
+                </tr>
+    {% endfor %}
+        </tbody>
+        <tfoot> 
+            <td  colspan="12">
+                <div style="height:25px;">
+                    <ul>
+                        <li>
+                        </li> 
+                        <li> 
+                        </li>                                                                
+                    </ul>
+                </div>
+            </td>
+        </tfoot>
+    </table>
+</div>
+
+{%endblock%}

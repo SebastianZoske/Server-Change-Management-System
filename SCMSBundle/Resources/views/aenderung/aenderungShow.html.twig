@@ -1,0 +1,50 @@
+{% extends 'CDUCSUSCMSBundle::baseTemplate.html.twig' %}
+
+{%block content%}
+
+<div class="datagrid">
+
+    <div id="add">
+        <a class="fancybox" data-fancybox-type="iframe" href="{{path("aenderungCreate")}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/add.png")}}"/></a>
+    </div>
+    <table>
+        <tfoot><h3 align="center">Änderung Übersicht</h3></tfoot>
+        <thead>
+            <tr>
+                <th>ID</th><th>Server</th><th>Beschreibung</th><th>Datum</th><th>Uhrzeit</th><th>Aktionen</th>
+            <tr>
+        </thead>
+        <tbody>
+    <!-- Schleife zur Anzeige von allen Datensätzen, die aus der Datenbank ausgelesen und übergeben wurden  -->
+    {% for aenderung in liste %}
+                <tr>
+                    <td align = "center">{{aenderung.id}}</td>
+                    <td align = "center">{{aenderung.server}}</td>
+                    <td align = "center">{{aenderung.beschreibung}}</td>
+                    <td align = "center">{{aenderung.datum|date('d.m.Y')}}</td>
+                    <td align = "center">{{aenderung.uhrzeit|date('H:i')}}</td>
+                    <td>
+                        <!-- Link zum Löschen des jeweiligen Datensatzes -->
+                        <a href="{{path("aenderungErase",{'id':aenderung.id})}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/erase.png")}}"/></a>
+                        <!-- Link zum Editieren des jewiligen Datensatzes im Erstellformular -->
+                        <a href="{{path("aenderungEdit",{'id':aenderung.id})}}"> <img height="20" width="20" src="{{asset("bundles/cducsuscms/images/edit.png")}}"/></a>
+                    </td>
+                </tr>
+    {% endfor %}
+        </tbody>
+        <tfoot> 
+            <td  colspan="12">
+                <div style="height:25px;">
+                    <ul>
+                        <li>
+                        </li> 
+                        <li> 
+                        </li>                                                                
+                    </ul>
+                </div>
+            </td>
+        </tfoot>
+    </table>
+</div>
+
+{%endblock%}

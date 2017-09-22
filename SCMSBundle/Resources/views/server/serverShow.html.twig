@@ -1,0 +1,48 @@
+{% extends 'CDUCSUSCMSBundle::baseTemplate.html.twig' %}
+
+{%block content%}
+
+<div id="add">
+    <a class="fancybox" data-fancybox-type="iframe" rel="group" href="{{path("serverCreate")}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/add.png")}}"/></a>
+</div>
+
+<div class="datagrid">
+    
+    <table>
+        <tfoot><h3 align="center">Server Übersicht</h3></tfoot>
+        <thead>
+            <tr>
+                <th>ID</th><th>Bezeichnung</th><th>Betriebssystem</th><th>Funktion</th><th>Standort</th><th>Aktionen</th>
+            <tr>
+        <thead>
+        <tbody>
+    {% for server in liste %}
+                <tr>
+                    <td>{{server.id}}</td>
+                    <td>{{server.bezeichnung}}</td>
+                    <td>{{server.betriebssystem}}</td>
+                    <td>{{server.funktion}}</td>
+                    <td>{{server.standort}}</td>
+                    <td>
+                        <a href="{{path("serverErase",{'id':server.id})}}"><img height="20" width="20" src="{{asset("bundles/cducsuscms/images/erase.png")}}"/></a>
+                        <a href="{{path("serverEdit",{'id':server.id})}}"> <img height="20" width="20" src="{{asset("bundles/cducsuscms/images/edit.png")}}"/></a>
+                    </td>
+                </tr>
+    {% endfor %}
+        </tbody>
+        <tfoot> 
+            <td  colspan="12">
+                <div style="height:25px;">
+                    <ul>
+                        <li>
+                        </li> 
+                        <li> 
+                        </li>                                                                
+                    </ul>
+                </div>
+            </td>
+        </tfoot>
+    </table>
+</div>
+
+{%endblock%}

@@ -1,0 +1,35 @@
+ /* 
+    Document   : stylesheet
+    Created on : 25.03.2014, 14:05:57
+    Author     : szoske
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#aenderung_beschreibung{
+    position:absolute;
+    left: 130px;
+}
+#aenderung_datum_day,#aenderung_uhrzeit,#aenderung_server{
+    position:absolute;
+    left: 130px;
+}
+
+
+#aenderung_datum_month{
+    position:absolute;
+    left: 190px;
+}
+
+#aenderung_datum_year{
+    position:absolute;
+    left: 230px;
+}
+
+label[for=aenderung_server]{
+    font-weight: bold;
+}

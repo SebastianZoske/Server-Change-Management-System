@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+    <head>
+        <title>SCMS</title>
+        
+        <!-- JQuery -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/cducsuscms/css/TableCSS.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/cducsuscms/css/tablestyle.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/cducsuscms/css/toolbar.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/cducsuscms/css/stylesheet.css')}}" />
+        
+        <!-- FancyBox -->
+        <link rel="stylesheet" href="{{asset('bundles/cducsuscms/fancybox/jquery.fancybox.css?v=2.1.5')}}" type="text/css" media="screen" />
+        <script type="text/javascript" src="{{asset('bundles/cducsuscms/fancybox/jquery.fancybox.pack.js?v=2.1.5')}}"></script>
+    
+        <script type="text/javascript">
+            $(document).ready(function() {
+                    $(".fancybox").fancybox({
+                        autoSize    : false,
+                        autoScale   : false,
+                        height      :   400,
+                        width       :   350,
+                        type        :   'iframe'
+                    });
+            });
+        </script>
+    </head>
+    
+    <ul class="menu">
+            <li>
+                <a href="{{path("userShow")}}">Benutzer</a>
+            </li>
+
+            <li>
+                <a href="{{path("serverShow")}}">Server</a>
+            </li>
+
+            <li>
+                <a href="{{path("aenderungShow")}}">Aenderungen</a>
+            </li>
+
+            <li>
+                <a href="{{path("standortShow")}}">Standort</a>
+            </li>
+        </ul>
+    
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+        
+    
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+                    $(document).ready(function() {
+                            $(".fancybox").fancybox();
+                    });
+        </script>
+    </head>
+
+    <body>
+        {% if create %}<h3>Standort erstellen</h3>{%else%}<h3>Standort editieren</h3>
+        {%endif%}
+        <form novalidate="true" method="POST" {{ form_enctype(form) }}/>
+             {{ form_widget(form) }}
+              <input src="" type="submit"/>
+        </form>
+    </body>
+
+</html>
